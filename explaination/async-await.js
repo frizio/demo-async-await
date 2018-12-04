@@ -1,9 +1,11 @@
 // Altra soluzione alla callback hell: ASYNC-AWAIT
 
 async function requestHandler(req, res) {
-    
-    // await User.findById(req.userId);
-    // let user = await User.findById(req.userId);
-    const user = await User.findById(req.userId);
 
+    const user = await User.findById(req.userId);
+    const tasks = await Task.findById(user.taskId);
+    tasks.completed = true;
+    await tasks.save();
+    res.send('Task completed!');
+    
 }
