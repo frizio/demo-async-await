@@ -2,10 +2,15 @@
 
 async function requestHandler(req, res) {
 
-    const user = await User.findById(req.userId);
-    const tasks = await Task.findById(user.taskId);
-    tasks.completed = true;
-    await tasks.save();
-    res.send('Task completed!');
-    
+    try {
+        const user = await User.findById(req.userId);
+        const tasks = await Task.findById(user.taskId);
+        tasks.completed = true;
+        await tasks.save();
+        res.send('Task completed!');
+    }
+    catch(err) {
+        res.send(err);
+    }
+
 }
