@@ -15,8 +15,18 @@ function requestHandler(req, res) {
                         if (err) {
                             res.send(err);
                         } else {
-                            res.send(tasks);
-                        }
+                            // Aggiornamento dell'elenco dei tasks e salvataggio
+                            tasks.completed = true;
+                            tasks.save(
+                                function(err) {
+                                    if (err) {
+                                        res.send(err);
+                                    } else {
+                                        res.send('Task completed!');
+                                    }
+                                }
+                            );
+                        } 
                     }
                 );
             }
