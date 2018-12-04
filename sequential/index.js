@@ -2,8 +2,11 @@
 
 const {taskOne, taskTwo} = require('./tasks');
 
-const value1 = taskOne();
-const value2 = taskTwo();
+async function main() {
 
-console.log('Valore di ritorno di task one ' + value1);
-console.log('Valore di ritorno di task two ' + value2);
+    const value1 = await taskOne();
+    const value2 = await taskTwo();
+
+    console.log('Valore di ritorno di task one ' + value1);
+    console.log('Valore di ritorno di task two ' + value2);
+}
