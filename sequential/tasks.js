@@ -1,20 +1,17 @@
+//
 
-// Funzione di js che esegue il codice in esso contenuto dopo un certo tempo. Utilizza callback
-// setTimeout(function()  {});
-
-const util = require('util');
-// Converte funzioni maneggiate con callback in funzioni maneggiate con promise o async-await
-util.promisify(setTimeout);
+const util = require('util')
+const sleep = util.promisify(setTimeout);
 
 module.exports = {
 
     async taskOne() {
-
+        await sleep(4000);
         return 'One value';
     },
 
     async taskTwo() {
-
+        await sleep(2000);
         return 'Two value';
     }
 
