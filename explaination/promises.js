@@ -6,7 +6,12 @@ function requestHandler(req, res) {
         // Gestione del dato che si aspetta
         .then(
             function(user)  {
-                res.send(user);
+                return Tasks.findBy(user.tasksId);
+            }
+        )
+        .then(
+            function(tasks) {
+                res.send(tasks);
             }
         )
         // Gestione dell'errore
