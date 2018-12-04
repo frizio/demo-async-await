@@ -16,8 +16,8 @@ function requestHandler(req, res) {
         )
         // Gestione dell'errore
         .catch(
-            function(err) {
-                res.send(err);
+            function(errors) {
+                res.send(errors);
             }
         );
 }
