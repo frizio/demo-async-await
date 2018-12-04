@@ -6,14 +6,22 @@ const sleep = util.promisify(setTimeout);
 module.exports = {
 
     async taskOne() {
-        throw new Error('Si è verificato un errore');
-        await sleep(4000);
-        return 'One value';
+        try {
+            throw new Error('Si è verificato un errore');
+            await sleep(4000);
+            return 'One value';            
+        } catch (error) {
+            console.log(error);
+        }
     },
 
     async taskTwo() {
-        await sleep(2000);
-        return 'Two value';
+        try {
+            await sleep(2000);
+            return 'Two value';   
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 }
