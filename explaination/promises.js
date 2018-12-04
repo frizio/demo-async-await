@@ -11,7 +11,9 @@ function requestHandler(req, res) {
         )
         .then(
             function(tasks) {
-                res.send(tasks);
+                // Modifica del dato ottenuto dalla consultazione precedente
+                tasks.completed  = true;
+                tasks.save();
             }
         )
         // Gestione dell'errore
