@@ -8,7 +8,17 @@ function requestHandler(req, res) {
             if (err) {
                 res.send(err);
             } else {
-                res.send(user);
+                // Trova l'elenco dei tasks dell'utente
+                Tasks.findBy(
+                    user.tasksId,
+                    function(err, tasks) {
+                        if (err) {
+                            res.send(err);
+                        } else {
+                            res.send(tasks);
+                        }
+                    }
+                );
             }
         } 
     );
